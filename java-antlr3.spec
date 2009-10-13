@@ -11,14 +11,16 @@
 %else
 %bcond_with	java_sun	# build with java-sun
 %endif
-#
+
+%bcond_without	ant		# don't build ant task
+
 %include	/usr/lib/rpm/macros.java
 
 %include	/usr/lib/rpm/macros.java
 Summary:	ANother Tool for Language Recognition
 Name:		antlr3
 Version:	3.2
-Release:	0.1
+Release:	1
 License:	Public Domain
 Group:		Development/Languages/Java
 Source0:	http://antlr.org/download/antlr-%{version}.jar
@@ -27,9 +29,11 @@ Source1:	ANTLR3.java
 Source2:	antlib.xml
 # Source0-md5:	ee7dc3fb20cf3e9efd871e297c0d532b
 URL:		http://antlr.org/
+%if %{with ant}
 BuildRequires:	ant
 %{!?with_java_sun:BuildRequires:	java-gcj-compat-devel}
 %{?with_java_sun:BuildRequires:	java-sun}
+%endif
 BuildRequires:	jpackage-utils
 BuildRequires:	rpm >= 4.4.9-56
 BuildRequires:	rpm-javaprov
@@ -56,6 +60,7 @@ Requires:	%{name} = %{version}-%{release}
 %description -n ant-antlr3
 Ant task for antlr3.
 
+%if %{with ant}
 %prep
 %setup -q -T -c
 mkdir -p org/apache/tools/ant/antlr
@@ -72,6 +77,7 @@ javac -d build org/apache/tools/ant/antlr/*java
 cp org/apache/tools/ant/antlr/antlib.xml build/org/apache/tools/ant/antlr/antlib.xml
 
 jar cf ant-antlr3.jar -C build org
+%endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -80,7 +86,10 @@ install -d $RPM_BUILD_ROOT%{_javadir}/ant
 # jars
 cp -a %{SOURCE0} $RPM_BUILD_ROOT%{_javadir}/%{name}-%{version}.jar
 ln -sf %{name}-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/%{name}.jar
+
+%if %{with ant}
 cp -a ant-antlr3.jar $RPM_BUILD_ROOT%{_javadir}/ant/ant-antlr3.jar
+%endif
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -89,6 +98,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{_javadir}/*.jar
 
+%if %{with ant}
 %files -n ant-antlr3
 %defattr(644,root,root,755)
 %{_javadir}/ant/*.jar
+%endif
