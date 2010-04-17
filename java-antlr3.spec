@@ -25,7 +25,7 @@ Source2:	antlib.xml
 URL:		http://antlr.org/
 %if %{with ant}
 BuildRequires:	ant
-BuildRequires:	java-sun
+BuildRequires:	jdk
 %endif
 BuildRequires:	jpackage-utils
 BuildRequires:	rpm-javaprov
