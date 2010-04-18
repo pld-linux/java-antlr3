@@ -14,7 +14,7 @@
 Summary:	ANother Tool for Language Recognition
 Name:		java-antlr3
 Version:	3.2
-Release:	1
+Release:	2
 License:	Public Domain
 Group:		Development/Languages/Java
 Source0:	http://antlr.org/download/antlr-%{version}.jar
@@ -32,6 +32,7 @@ BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
 Requires:	jpackage-utils
 BuildArch:	noarch
+Obsoletes:	antlr3 < %{version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
