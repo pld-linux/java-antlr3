@@ -12,7 +12,7 @@
 
 %include	/usr/lib/rpm/macros.java
 Summary:	ANother Tool for Language Recognition
-Name:		antlr3
+Name:		java-antlr3
 Version:	3.2
 Release:	1
 License:	Public Domain
