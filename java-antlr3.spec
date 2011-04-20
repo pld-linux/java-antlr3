@@ -10,11 +10,11 @@
 
 %include	/usr/lib/rpm/macros.java
 
-%include	/usr/lib/rpm/macros.java
+%define		srcname antlr3
 Summary:	ANother Tool for Language Recognition
 Name:		java-antlr3
 Version:	3.2
-Release:	2
+Release:	3
 License:	Public Domain
 Group:		Development/Languages/Java
 Source0:	http://antlr.org/download/antlr-%{version}.jar
@@ -77,8 +77,8 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_javadir}/ant
 
 # jars
-cp -a %{SOURCE0} $RPM_BUILD_ROOT%{_javadir}/%{name}-%{version}.jar
-ln -sf %{name}-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/%{name}.jar
+cp -a %{SOURCE0} $RPM_BUILD_ROOT%{_javadir}/%{srcname}-%{version}.jar
+ln -sf %{srcname}-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/%{srcname}.jar
 
 %if %{with ant}
 cp -a ant-antlr3.jar $RPM_BUILD_ROOT%{_javadir}/ant/ant-antlr3.jar
