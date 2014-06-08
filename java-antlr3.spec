@@ -1,4 +1,5 @@
 # TODO:
+# - why belle-sip build fails with this version?
 # - Shell wrapper
 # - Some docs?
 
@@ -12,20 +13,19 @@
 
 %include	/usr/lib/rpm/macros.java
 
-%define		srcname antlr3
 Summary:	ANother Tool for Language Recognition
 Summary(pl.UTF-8):	ANother Tool for Language Recognition - analizator językowy
 Name:		java-antlr3
-Version:	3.2
-Release:	3
+Version:	3.5.2
+Release:	1
 License:	Public Domain
 Group:		Development/Languages/Java
-Source0:	http://antlr3.org/download/antlr-%{version}.jar
+Source0:	http://www.antlr3.org/download/antlr-%{version}-complete.jar
+# Source0-md5:	acfa69f928a0f1653555bda73091efca
 # From http://antlr.org/share/1169924912745/antlr3-task.zip
 Source1:	ANTLR3.java
 Source2:	antlib.xml
-# Source0-md5:	ee7dc3fb20cf3e9efd871e297c0d532b
-URL:		http://antlr3.org/
+URL:		http://www.antlr3.org/
 %if %{with ant}
 BuildRequires:	ant
 BuildRequires:	jdk
@@ -91,8 +91,8 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_javadir}/ant
 
 # jars
-cp -a %{SOURCE0} $RPM_BUILD_ROOT%{_javadir}/%{srcname}-%{version}.jar
-ln -sf %{srcname}-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/%{srcname}.jar
+cp -a %{SOURCE0} $RPM_BUILD_ROOT%{_javadir}/antlr3-%{version}.jar
+ln -sf antlr3-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/antlr3.jar
 
 %if %{with ant}
 cp -a ant-antlr3.jar $RPM_BUILD_ROOT%{_javadir}/ant/ant-antlr3.jar
