@@ -10,7 +10,6 @@
 # Conditional build:
 %bcond_without	ant		# don't build ant task
 
-%include	/usr/lib/rpm/macros.java
 
 %define		srcname antlr3
 Summary:	ANother Tool for Language Recognition
