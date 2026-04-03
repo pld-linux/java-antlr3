@@ -16,7 +16,7 @@ Summary:	ANother Tool for Language Recognition
 Summary(pl.UTF-8):	ANother Tool for Language Recognition - analizator językowy
 Name:		java-antlr3
 Version:	3.2
-Release:	3
+Release:	4
 License:	Public Domain
 Group:		Development/Languages/Java
 Source0:	http://antlr3.org/download/antlr-%{version}.jar
