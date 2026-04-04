@@ -10,13 +10,15 @@
 # Conditional build:
 %bcond_without	ant		# don't build ant task
 
+%{?use_default_jdk:%use_default_jdk 8}
+
 
 %define		srcname antlr3
 Summary:	ANother Tool for Language Recognition
 Summary(pl.UTF-8):	ANother Tool for Language Recognition - analizator językowy
 Name:		java-antlr3
 Version:	3.2
-Release:	4
+Release:	5
 License:	Public Domain
 Group:		Development/Languages/Java
 Source0:	http://antlr3.org/download/antlr-%{version}.jar
@@ -27,11 +29,11 @@ Source2:	antlib.xml
 URL:		http://antlr3.org/
 %if %{with ant}
 BuildRequires:	ant
-BuildRequires:	jdk
+%buildrequires_jdk
 %endif
 BuildRequires:	jpackage-utils
 BuildRequires:	rpm-javaprov
-BuildRequires:	rpmbuild(macros) >= 1.300
+BuildRequires:	rpmbuild(macros) >= 1.556
 Requires:	jpackage-utils
 Obsoletes:	antlr3 < %{version}
 BuildArch:	noarch
